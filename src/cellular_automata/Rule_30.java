@@ -13,8 +13,8 @@ public class Rule_30 {
 
     private int width;
     private int iterations;
-    private char[] x;
-    private char[] x_old;
+    private char[] line;
+    private char[] line_old;
 
     public Rule_30(int width, int iterations) {
         this.width = width;
@@ -22,35 +22,35 @@ public class Rule_30 {
     }
 
     public void print() {
-        x = new char[width + 2];
-        x_old = new char[width + 2];
+        line = new char[width + 2];
+        line_old = new char[width + 2];
 
         for (int i = 0; i <= width; i++) {
-            x[i] = ' ';
+            line[i] = ' ';
         }
-        x[width / 2] = '*';
+        line[width / 2] = '*';
         for (int i = 1; i <= width; i++) {
-            System.out.print(x[i]);
+            System.out.print(line[i]);
         }
         System.out.println(" ");
         for (int j = 1; j <= iterations; j++) {
             for (int i = 1; i < width + 2; i++) {
-                x_old[i] = x[i];
+                line_old[i] = line[i];
             }
             for (int i = 1; i <= width; i++) {
-                if ((x_old[i - 1] == ' ' && x_old[i] == ' ' && x_old[i + 1] == '*')
-                        || (x_old[i - 1] == ' ' && x_old[i] == '*' && x_old[i + 1] == ' ')
-                        || (x_old[i - 1] == ' ' && x_old[i] == '*' && x_old[i + 1] == '*')
-                        || (x_old[i - 1] == '*' && x_old[i] == ' ' && x_old[i + 1] == ' ')) {
-                    x[i] = '*';
+                if ((line_old[i - 1] == ' ' && line_old[i] == ' ' && line_old[i + 1] == '*')
+                        || (line_old[i - 1] == ' ' && line_old[i] == '*' && line_old[i + 1] == ' ')
+                        || (line_old[i - 1] == ' ' && line_old[i] == '*' && line_old[i + 1] == '*')
+                        || (line_old[i - 1] == '*' && line_old[i] == ' ' && line_old[i + 1] == ' ')) {
+                    line[i] = '*';
                 } else {
-                    x[i] = ' ';
+                    line[i] = ' ';
                 }
             }
-            x[0] = x[width];
-            x[width + 1] = x[1];
+            line[0] = line[width];
+            line[width + 1] = line[1];
             for (int i = 1; i <= width; i++) {
-                System.out.print(x[i]);
+                System.out.print(line[i]);
             }
             System.out.println(" ");
         }
